@@ -6,7 +6,7 @@
  */
 
 #include <unistd.h>// Sleeping
-#include <stdlib.h>// RAND_MAX
+#include <cstdlib>// RAND_MAX
 #include <iostream>
 
 #include "MyGL.h"
@@ -23,7 +23,7 @@ enum DrawMode{
 } drawmode = OPENGL;
 
 float randomFloat(const float high = 1, const float low = 0) {
-	return (float)rand() / ((float)RAND_MAX / (high - low)) + low;
+	return (float)rand() / (float)RAND_MAX * (high - low) + low;
 }
 
 using namespace MyGL;
@@ -68,12 +68,10 @@ void keyPressed(unsigned char key, int x, int y){
 			break;
 		case '1':
 			drawmode = OPENGL;
-			key = lastKey;
-			break;
+			return;
 		case '2':
 			drawmode = MYGL;
-			key = lastKey;
-			break;
+			return;
 		case 'c':// Clear
 			myClear(GL_COLOR_BUFFER_BIT);
 			break;
@@ -82,8 +80,7 @@ void keyPressed(unsigned char key, int x, int y){
 			break;
 		case 'r':// Random clear color
 			myClearColor(randomFloat(), randomFloat(), randomFloat(), randomFloat());
-			key = lastKey;
-			break;
+			return;
 		case 's':// Spiral
 			spiral();
 			break;
@@ -91,8 +88,7 @@ void keyPressed(unsigned char key, int x, int y){
 			triangles();
 			break;
 		default:// Don't want to stop if someone mistypes
-			key = lastKey;
-			break;
+			return;
 	}
 
 	if(x != 0 && y != 0 && key != lastKey){
@@ -101,11 +97,32 @@ void keyPressed(unsigned char key, int x, int y){
 	}
 }
 
+void repeatAction(){
+	switch(lastKey){
+		case 'c':// Clear
+			myClear(GL_COLOR_BUFFER_BIT);
+			break;
+		case 'l':// Lines
+			lines();
+			break;
+		case 'r':// Random clear color
+			myClearColor(randomFloat(), randomFloat(), randomFloat(), randomFloat());
+			break;
+		case 's':// Spiral
+			spiral();
+			break;
+		case 't':// Triangles
+			triangles();
+			break;
+		default:
+			break;
+	}
+}
+
 void DrawGLScene(){// The main drawing function.
+	myClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);// DO NOT REMOVE DEPTH BIT
 
-	myClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);// DO NOT REMOVE DEPTH
-
-	keyPressed(lastKey, 0, 0);
+	repeatAction();
 
 	if (drawmode == MYGL) {
 		// Save the old state so that you can set it back after you draw

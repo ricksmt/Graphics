@@ -22,11 +22,12 @@ namespace MyGL{
 	// Variables
 	extern float raster[WIDTH * HEIGHT * BYTES];
 
-	extern Color clear, current;
+	extern Color clearColor, currentColor;
 
 	extern bool reading;
 	extern GLenum readingMode;
 	extern GLenum sBlend, dBlend;
+	extern GLfloat pointSize;
 
 	// Helper Methods
 	void setPixel(int x, int y, Color c);
@@ -42,9 +43,11 @@ namespace MyGL{
 
 	void myColor3f(float r, float g, float b);
 
+	void myPointSize(GLfloat size);
+
 	void myVertex2i(int x, int y);
 
-	void glBlendFunc(GLenum sfactor, GLenum dfactor) { sBlend = sfactor; dBlend = dfactor; }
+	void glBlendFunc(GLenum sfactor, GLenum dfactor);
 
 }
 
