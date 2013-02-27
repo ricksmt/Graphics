@@ -11,3 +11,7 @@
 *.lai
 *.la
 *.a
+
+# Hidden files (and exceptions)
+.*
+!*.gitignore
