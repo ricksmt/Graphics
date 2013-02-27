@@ -15,3 +15,8 @@
 # Hidden files (and exceptions)
 .*
 !*.gitignore
+
+# Makefiles
+*.mk
+*/makefile
+makefile

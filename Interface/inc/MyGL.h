@@ -10,6 +10,8 @@
 
 #include <GL/glut.h>
 
+#include "Color.h"
+
 namespace MyGL{
 
 	// Constants
@@ -20,14 +22,14 @@ namespace MyGL{
 	// Variables
 	extern float raster[WIDTH * HEIGHT * BYTES];
 
-	extern float clearR, clearG, clearB, clearA;
-	extern float currentR, currentG, currentB, currentA;
+	extern Color clear, current;
 
 	extern bool reading;
 	extern GLenum readingMode;
+	extern GLenum sBlend, dBlend;
 
 	// Helper Methods
-	void setPixel(int x, int y, float r, float g, float b);
+	void setPixel(int x, int y, Color c);
 
 	// OpenGL Methods
 	void myClearColor(float r, float g, float b, float a);
@@ -41,6 +43,9 @@ namespace MyGL{
 	void myColor3f(float r, float g, float b);
 
 	void myVertex2i(int x, int y);
+
+	void glBlendFunc(GLenum sfactor, GLenum dfactor) { sBlend = sfactor; dBlend = dfactor; }
+
 }
 
 #endif /* MYGL_H_ */

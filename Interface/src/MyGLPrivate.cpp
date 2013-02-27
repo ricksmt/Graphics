@@ -11,15 +11,16 @@ namespace MyGL{
 
 	float raster[WIDTH * HEIGHT * BYTES];
 
-	float clearR = 0, clearG = 0, clearB = 0, clearA = 0;
-	float currentR = 1, currentG = 1, currentB = 1, currentA = 1;
+	Color clear(0, 0, 0);
+	Color current(1, 1, 1);
 
 	bool reading = false;
 	GLenum readingMode;
+	GLenum sBlend = GL_ONE, dBlend = GL_ZERO;
 
-	void setPixel(int x, int y, float r, float g, float b){
-		raster[((y * WIDTH) + x) * 3 + 0] = r;
-		raster[((y * WIDTH) + x) * 3 + 1] = g;
-		raster[((y * WIDTH) + x) * 3 + 2] = b;
+	void setPixel(int x, int y, Color c){
+		raster[((y * WIDTH) + x) * 3 + 0] = c.red;
+		raster[((y * WIDTH) + x) * 3 + 1] = c.green;
+		raster[((y * WIDTH) + x) * 3 + 2] = c.blue;
 	}
 }

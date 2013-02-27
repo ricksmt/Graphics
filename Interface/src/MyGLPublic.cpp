@@ -8,12 +8,9 @@
 #include "MyGL.h"
 #include "MyGLException.h"
 
-	void MyGL::myClearColor(float r, float g, float b, float a){
+	void MyGL::myClearColor(float r, float g, float b, float a = 1){
 		glClearColor(r, g, b, a);
-		clearR = r;
-		clearG = g;
-		clearB = b;
-		clearA = a;
+		clear = Color(r, g, b, a);
 	}
 
 	void MyGL::myClear(GLint mode){
@@ -21,7 +18,7 @@
 		if(mode & GL_COLOR_BUFFER_BIT){
 			for(int i = 0; i < WIDTH; i++){
 				for(int j = 0; j < HEIGHT; j++){
-					setPixel(i, j, clearR, clearG, clearB);
+					setPixel(i, j, clear);
 				}
 			}
 		}
@@ -42,9 +39,7 @@
 
 	void MyGL::myColor3f(float r, float g, float b){
 		glColor3f(r, g, b);
-		currentR = r;
-		currentG = g;
-		currentB = b;
+		current = Color(r, g, b);
 	}
 
 	void MyGL::myVertex2i(int x, int y){
