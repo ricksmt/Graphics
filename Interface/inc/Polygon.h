@@ -14,17 +14,20 @@
 
 namespace MyGL{
 
-	struct Polygon{
+	struct Polygon: Shape{
 
 		std::vector<Point> vertices;
 
 		Polygon() {};
 		Polygon(const std::vector<Point> v): vertices(v) { }
+		virtual ~Polygon() {}
 
 		Polygon& operator <<(const Point& p){
 			vertices.push_back(p);
 			return *this;
 		}
+
+		virtual void draw() const {}
 	};
 }
 

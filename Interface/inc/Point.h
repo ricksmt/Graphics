@@ -10,6 +10,8 @@
 
 #include <vector>
 #include "MyGL.h"
+#include "Color.h"
+#include "Shape.h"
 #include <Eigen/Core>
 
 using namespace Eigen;
@@ -19,7 +21,7 @@ typedef Vector4f Location;
 namespace MyGL {
 
 	extern GLfloat pointSize;
-	struct Point{
+	struct Point: Shape{
 
 		Location location;
 		GLfloat size;
@@ -31,6 +33,9 @@ namespace MyGL {
 		{
 			location << x, y, z, h;
 		}
+		virtual ~Point() {}
+
+		virtual void draw() const {}
 	};
 	extern std::vector<Point> vertices;
 }

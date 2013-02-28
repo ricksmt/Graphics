@@ -12,11 +12,14 @@
 
 namespace MyGL{
 
-	struct Line{
+	struct Line: Shape{
 
 		Point start, end;
 
 		Line(Point s, Point e): start(s), end(e) { }
+		virtual ~Line() {}
+
+		virtual void draw() const {}
 	};
 }
 

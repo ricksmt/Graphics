@@ -36,6 +36,28 @@
 
 	void MyGL::myVertex2i(int x, int y){
 		glVertex2i(x, y);
-		// TODO: Switch on readingMode
 		vertices.push_back(Point(x, y));
+		switch(readingMode){
+			case GL_POINTS:
+				break;
+			case GL_LINES:
+				break;
+			case GL_LINE_STRIP:
+				break;
+			case GL_LINE_LOOP:
+				break;
+			case GL_TRIANGLES:
+				break;
+			case GL_TRIANGLE_STRIP:
+				break;
+			case GL_TRIANGLE_FAN:
+				break;
+			case GL_QUADS:
+				break;
+			case GL_QUAD_STRIP:
+				break;
+			case GL_POLYGON:
+				break;
+		}
+		// TODO: Switch on readingMode
 	}
