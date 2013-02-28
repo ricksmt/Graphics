@@ -7,6 +7,7 @@
 
 #include "MyGL.h"
 #include "MyGLException.h"
+#include "Point.h"
 
 	void MyGL::myClear(GLint mode){
 		glClear(mode);
@@ -30,9 +31,11 @@
 		glEnd();
 		if(!reading) throw MyGLException("myEnd has already been called.");
 		reading = false;
+		vertices.clear();
 	}
 
 	void MyGL::myVertex2i(int x, int y){
 		glVertex2i(x, y);
 		// TODO: Switch on readingMode
+		vertices.push_back(Point(x, y));
 	}

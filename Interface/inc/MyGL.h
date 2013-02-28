@@ -9,7 +9,6 @@
 #define MYGL_H_
 
 #include <GL/glut.h>
-
 #include "Color.h"
 
 namespace MyGL{
@@ -22,12 +21,9 @@ namespace MyGL{
 	// Variables
 	extern float raster[WIDTH * HEIGHT * BYTES];
 
-	extern Color clearColor, currentColor;
-
 	extern bool reading;
 	extern GLenum readingMode;
 	extern GLenum sBlend, dBlend;
-	extern GLfloat pointSize;
 
 	// Helper Methods
 	void setPixel(int x, int y, Color c);

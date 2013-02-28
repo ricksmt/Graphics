@@ -8,6 +8,7 @@
 #ifndef POINT_H_
 #define POINT_H_
 
+#include <vector>
 #include "MyGL.h"
 #include <Eigen/Core>
 
@@ -15,18 +16,23 @@ using namespace Eigen;
 
 typedef Vector4f Location;
 
-struct Point{
+namespace MyGL {
 
-	Location location;
-	GLfloat size;
-	Color color;
+	extern GLfloat pointSize;
+	struct Point{
 
-	Point(float x, float y, float z = 0, float h = 1):
-		size(MyGL::pointSize),
-		color(MyGL::currentColor)
-	{
-		location << x, y, z, h;
-	}
-};
+		Location location;
+		GLfloat size;
+		Color color;
+
+		Point(float x, float y, float z = 0, float h = 1):
+			size(MyGL::pointSize),
+			color(MyGL::currentColor)
+		{
+			location << x, y, z, h;
+		}
+	};
+	extern std::vector<Point> vertices;
+}
 
 #endif /* POINT_H_ */

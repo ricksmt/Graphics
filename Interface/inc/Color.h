@@ -8,26 +8,31 @@
 #ifndef COLOR_H_
 #define COLOR_H_
 
-struct Color {
+namespace MyGL{
 
-	float red;
-	float green;
-	float blue;
-	float alpha;// Transparent 0 -- 1 Opaque
+	struct Color {
 
-	Color(const float red = 1, const float green = 1, const float blue = 1, const float alpha = 1):
-		red(red), green(green), blue(blue), alpha(alpha) { }
-	~Color() {}
+		float red;
+		float green;
+		float blue;
+		float alpha;// Transparent 0 -- 1 Opaque
 
-	Color& operator =(const Color& c){
-		if(this != &c){
-			red = c.red;
-			green = c.green;
-			blue = c.blue;
-			alpha = c.alpha;
+		Color(const float red = 1, const float green = 1, const float blue = 1, const float alpha = 1):
+			red(red), green(green), blue(blue), alpha(alpha) { }
+		~Color() {}
+
+		Color& operator =(const Color& c){
+			if(this != &c){
+				red = c.red;
+				green = c.green;
+				blue = c.blue;
+				alpha = c.alpha;
+			}
+			return *this;
 		}
-		return *this;
-	}
-};
+	};
+
+	extern Color clearColor, currentColor;
+}
 
 #endif /* COLOR_H_ */

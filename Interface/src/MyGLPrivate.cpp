@@ -5,7 +5,9 @@
  *      Author: ricksmt
  */
 
+#include <vector>
 #include "MyGL.h"
+#include "Point.h"
 
 namespace MyGL{
 
@@ -18,6 +20,7 @@ namespace MyGL{
 	GLenum readingMode;
 	GLenum sBlend = GL_ONE, dBlend = GL_ZERO;
 	GLfloat pointSize = 1;
+	std::vector<Point> vertices;
 
 	void glBlendFunc(GLenum sfactor, GLenum dfactor){
 		sBlend = sfactor;

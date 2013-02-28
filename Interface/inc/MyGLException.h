@@ -11,16 +11,19 @@
 #include <exception>
 #include <string>
 
-class MyGLException: public std::exception {
+namespace MyGL{
 
-	std::string message;
+	class MyGLException: public std::exception {
 
-public:
-	MyGLException() {}
-	MyGLException(const std::string message): message(message) {}
-	virtual ~MyGLException() throw() {}
+		std::string message;
 
-	virtual const char* what() const throw() { return message.c_str(); }
-};
+	public:
+		MyGLException() {}
+		MyGLException(const std::string message): message(message) {}
+		virtual ~MyGLException() throw() {}
+
+		virtual const char* what() const throw() { return message.c_str(); }
+	};
+}
 
 #endif /* MYGLEXCEPTION_H_ */

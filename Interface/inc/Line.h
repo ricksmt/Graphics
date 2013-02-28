@@ -10,11 +10,14 @@
 
 #include "Point.h"
 
-struct Line{
+namespace MyGL{
 
-	Point start, end;
+	struct Line{
 
-	Line(Point s, Point e): start(s), end(e) { }
-};
+		Point start, end;
+
+		Line(Point s, Point e): start(s), end(e) { }
+	};
+}
 
 #endif /* LINE_H_ */
