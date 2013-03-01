@@ -5,7 +5,6 @@
  *      Author: ricksmt
  */
 
-#include <vector>
 #include "MyGL.h"
 #include "Point.h"
 
@@ -16,11 +15,10 @@ namespace MyGL{
 	Color clearColor(0, 0, 0);
 	Color currentColor(1, 1, 1);
 
-	bool reading = false;
 	GLenum readingMode;
 	GLenum sBlend = GL_ONE, dBlend = GL_ZERO;
-	GLfloat pointSize = 1;
-	std::vector<Point> vertices;
+	std::deque<Point> vertices;
+	bool odd = false;
 
 	void glBlendFunc(GLenum sfactor, GLenum dfactor){
 		sBlend = sfactor;

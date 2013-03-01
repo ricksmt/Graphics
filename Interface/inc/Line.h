@@ -16,8 +16,17 @@ namespace MyGL{
 
 		Point start, end;
 
-		Line(Point s, Point e): start(s), end(e) { }
+		Line(const Line& l): start(l.start), end(l.end) {}
+		Line(Point s, Point e): start(s), end(e) {}
 		virtual ~Line() {}
+
+		Line& operator =(const Line& l){
+			if(this != &l){
+				start = l.start;
+				end = l.end;
+			}
+			return *this;
+		}
 
 		virtual void draw() const {}
 	};

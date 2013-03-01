@@ -20,8 +20,6 @@ namespace MyGL{
 
 	// Variables
 	extern float raster[WIDTH * HEIGHT * BYTES];
-
-	extern bool reading;
 	extern GLenum readingMode;
 	extern GLenum sBlend, dBlend;
 
